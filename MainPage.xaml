@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DegreePlanner.MainPage">
+	<StackLayout VerticalOptions="FillAndExpand">
+		<Frame BackgroundColor="#2196F3" Padding="0" CornerRadius="0">
+			<Label Text="WGU Degree Planner" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+		</Frame>
+
+		<Grid RowSpacing="1" ColumnSpacing="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Label	Text="Terms" 
+					Grid.Column="0"
+					Grid.Row="0"
+					Grid.ColumnSpan="3"
+					BackgroundColor="PowderBlue"
+					TextColor="white"
+					FontSize="Title"
+					HorizontalTextAlignment="Center"
+				></Label>
+			
+			<Button Text="Add Term"
+					Grid.Column="0"
+					Grid.Row="1"
+					Grid.RowSpan="1"
+					Grid.ColumnSpan="3"
+					Clicked="AddTermButton"
+				/>
+			
+		</Grid>
+	
+
+		<ListView	x:Name="fullViewOfTermsCourses" 	
+					SeparatorColor="Black"
+					RowHeight="100"
+					ItemTapped="fullViewOfTermsCourses_ItemTapped" 
+		>
+			
+			<ListView.ItemTemplate >
+					<DataTemplate>
+						<ViewCell x:Name="findCell" >
+							<StackLayout	
+								Orientation="Vertical"
+								VerticalOptions="Center"
+							>
+							<Label BackgroundColor="PowderBlue" Text="{Binding Name}" />
+							<Label Text="{Binding StartDate, StringFormat='{0:MMMM dd, yyyy}'}" />
+							<Label Text="{Binding EndDate, StringFormat='{0:MMMM dd, yyyy}'}" />
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+
+
+
+
+
+
+	</StackLayout>
+</ContentPage>
+
+
+<!--<TableView 
+				BackgroundColor="PowderBlue"
+				HeightRequest="1"
+		>
+	<TableRoot>
+		<TableSection Title="Ring">
+			<TextCell Text="New Voice Mail" />
+			<TextCell Text="New Mail"/>
+		</TableSection>
+	</TableRoot>
+</TableView>-->
